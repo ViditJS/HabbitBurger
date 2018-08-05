@@ -14,10 +14,10 @@ class BurgerIngridient extends React.Component {
       case 'bread-top':
         ingridient = <div className="BreadTop"></div>
       break;
-      case 'Meat':
+      case 'meat':
         ingridient = <div className="Meat"></div>
       break;
-      case 'beacon':
+      case 'bacon':
         ingridient = <div className="Bacon"></div>
       break;
       case 'salad':
