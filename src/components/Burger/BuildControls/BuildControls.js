@@ -9,9 +9,13 @@ const controls = [
 ];
 const BuildControls = (props) => (
   <div className="BuildControls">
+    <h1>Burger price is {props.newPrice}</h1>
     {controls.map(control => (
-      <BuildControl key = {control.key} name = {control.key} added = {() => props.ingredientAdded(control.type)} />
+      <BuildControl key = {control.key} name = {control.key}
+      added = {() => props.ingredientAdded(control.type)}
+      removed = {() => props.ingredientRemoved(control.type)} />
     ))}
+    <button className = "OrderButton" disabled = {!props.purchasable}>ORDER NOW </button>
   </div>
 );
 export default BuildControls
