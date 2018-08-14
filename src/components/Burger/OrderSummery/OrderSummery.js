@@ -1,19 +1,18 @@
 import React from 'react';
-const OrderSummery = (props) => {
-  console.log('props is', props);
-   const ingredientSummery = Object.keys(props.ingridients).map(
-     key => {
-       return (<li>key = {key} : {props.ingridients[key]}</li>);
-     })
-   console.log('total ingredients in burger', ingredientSummery);
+class OrderSummery extends React.Component {
+  render() {
+    const ingredientSummery = Object.keys(this.props.location.state).map(
+      key => {
+        return (<li key={key}> {key} : {this.props.location.state[key]}</li>);
+      })
    return (
     <div>
       <h3> Your order</h3>
       <p> A delecious Burger following ingredients: </p>
-      <ul>
-        {ingredientSummery}
-      </ul>
+      {ingredientSummery}
+      <p> Continue to Checkout? </p>
     </div>
   );
+}
 }
 export default OrderSummery;

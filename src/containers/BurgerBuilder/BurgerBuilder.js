@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import Modal from '../../components/UI/Modal/Modal.js';
-import OrderSummery from '../../components/Burger/OrderSummery/OrderSummery';
+ // import Modal from '../../components/UI/Modal/Modal.js';
 const INGREDIENT_PRICES = {
   salad: 0.5,
   bacon: 0.75,
@@ -18,7 +17,8 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 4,
-    purchasable: false
+    purchasable: false,
+    purchasing: false
   }
   // Total amount of burger
   updatePurchasable (ingredients) {
@@ -75,6 +75,9 @@ class BurgerBuilder extends Component {
       this.setState({ingredients: updatedIngredients, totalPrice: newPrice});
       this.updatePurchasable(updatedIngredients);
   }
+  purchaseHandler = ()  => {
+    this.setState({purchasing: true});
+  }
   render () {
     const disabledInfo = {
       ...this.state.ingredients
@@ -84,12 +87,13 @@ class BurgerBuilder extends Component {
     }
     return (
       <div>
-        <Modal> <OrderSummery ingridients = {this.state.ingredients}/> </Modal>
         <Burger ingridient = {this.state.ingredients}/>
         <BuildControls ingredientAdded = {this.addIngredientHandler}
         ingredientRemoved = {this.removeIngredientHandler}
         newPrice = {this.state.totalPrice}
-        purchasable = {this.state.purchasable}/>
+        purchasable = {this.state.purchasable}
+        ordered = {this.purchaseHandler}
+        ingridients = {this.state.ingredients}/>
       </div>
     );
   }
