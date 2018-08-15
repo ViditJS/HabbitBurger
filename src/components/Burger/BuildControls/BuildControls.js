@@ -19,7 +19,7 @@ const BuildControls = (props) => (
       added = {() => props.ingredientAdded(control.type)}
       removed = {() => props.ingredientRemoved(control.type)} />
     ))}
-    <button className = "OrderButton"><Link to={{pathname: '/OrderSummery', state: props.ingridients}}>ORDER NOW</Link></button>
+    <Link to={{pathname: '/OrderSummery', state: props.ingridients, price: props.newPrice}} className = "OrderButton">ORDER NOW</Link>
   </div>
 );
 export default BuildControls
