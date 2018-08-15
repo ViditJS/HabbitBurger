@@ -4,7 +4,9 @@ import Toolbar from '../Navigation/Toolbar/Toolbar';
  class Layout extends React.Component {
    render() {
     return (
-      <Toolbar/>
+      <div className="Content">
+        <Toolbar/>
+      </div>
     );
    }
  };
