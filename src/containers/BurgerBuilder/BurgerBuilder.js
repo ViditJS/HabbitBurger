@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import axios from '../../axios-orders';
  // import Modal from '../../components/UI/Modal/Modal.js';
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -10,15 +11,16 @@ const INGREDIENT_PRICES = {
 }
 class BurgerBuilder extends Component {
   state = {
-    ingredients: {
-      salad: 0,
-      bacon: 0,
-      cheese: 0,
-      meat: 0
-    },
+    ingredients: null,
     totalPrice: 4,
     purchasable: false,
     purchasing: false
+  }
+  componentDidMount() {
+    axios.get('https://thehabbitburger.firebaseio.com/ingredients.json')
+    .then (response => {
+      this.setState({ingredients: response.data});
+    });
   }
   // Total amount of burger
   updatePurchasable (ingredients) {
@@ -85,15 +87,23 @@ class BurgerBuilder extends Component {
     for(let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
-    return (
-      <div>
-        <Burger ingridient = {this.state.ingredients}/>
+    let burger;
+    if (this.state.ingredients) {
+      burger = (
+        <div>
+        <Burger ingridient = {this.state.ingredients}></Burger>
         <BuildControls ingredientAdded = {this.addIngredientHandler}
         ingredientRemoved = {this.removeIngredientHandler}
         newPrice = {this.state.totalPrice}
         purchasable = {this.state.purchasable}
         ordered = {this.purchaseHandler}
-        ingridients = {this.state.ingredients}/>
+        ingridients = {this.state.ingredients}></BuildControls>
+        </div>
+      );
+    }
+    return (
+      <div>
+        {burger}
       </div>
     );
   }
