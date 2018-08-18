@@ -1,0 +1,27 @@
+.Success {
+    color: #5C9210;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px #966909;
+}
+.Danger {
+    color: #944317;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    margin-left: 0;
+    padding-left: 0;
+    box-shadow: 2px 2px 2px #966909;
+}

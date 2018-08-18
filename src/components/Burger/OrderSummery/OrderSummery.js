@@ -31,10 +31,15 @@ class OrderSummery extends React.Component {
       laoding: false
     })).catch(error => console.log(error));
     // To navigate to orderSummery page
-       // this.props.history.push('/Checkout');
        // this.props.history.pushState(this.props.location.state, '/Checkout');
+       const queryParams = [];
+       for (let i in this.props.location.state) {
+         queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.location.state[i]));
+       }
+       const queryString = queryParams.join('&');
     this.props.history.push({
       pathname: '/Checkout',
+      search: '?' + queryParams,
       state: this.props.location.state
     })
   }
