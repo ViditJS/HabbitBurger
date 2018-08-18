@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './OrderSummery.css';
 import axios from '../../../axios-orders';
-import Spinner from '../../UI/Spinner/Spinner';
 class OrderSummery extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return ((nextProps.show != this.props.show) || (nextProps.children != this.props.children));
-  };
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return ((nextProps.show != this.props.show) || (nextProps.children != this.props.children));
+  // };
   state = {
     loading: false
   }
@@ -30,13 +29,16 @@ class OrderSummery extends React.Component {
     axios.post('/orders.json', order)
     .then(response => this.setState({
       laoding: false
-    }))
-    .catch(error => console.log(error));
+    })).catch(error => console.log(error));
+    // To navigate to orderSummery page
+       // this.props.history.push('/Checkout');
+       // this.props.history.pushState(this.props.location.state, '/Checkout');
+    this.props.history.push({
+      pathname: '/Checkout',
+      state: this.props.location.state
+    })
   }
   render() {
-    if (this.state.loading) {
-        <Spinner/>
-    }
     const ingredientSummery = Object.keys(this.props.location.state).map(
       key => {
         return (<li key={key}> {key} : {this.props.location.state[key]}</li>);

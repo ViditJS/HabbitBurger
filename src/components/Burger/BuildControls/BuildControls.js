@@ -1,8 +1,6 @@
 import React from 'react';
 import './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
-import OrderSummery from '../OrderSummery/OrderSummery';
-import Router from '../../../router/Router';
 import { Link } from 'react-router-dom';
 const controls = [
   {key: 'Salad', type:'salad'},
@@ -10,7 +8,6 @@ const controls = [
   {key: 'Cheese', type:'cheese'},
   {key: 'Meat', type:'meat'},
 ];
-let ingredientSummery
 const BuildControls = (props) => (
   <div className="BuildControls">
     <h1>Burger price is {props.newPrice}</h1>
