@@ -33,6 +33,7 @@ class OrderSummery extends React.Component {
     // To navigate to orderSummery page
        // this.props.history.pushState(this.props.location.state, '/Checkout');
        const queryParams = [];
+       // create URL
        for (let i in this.props.location.state) {
          queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.location.state[i]));
        }
