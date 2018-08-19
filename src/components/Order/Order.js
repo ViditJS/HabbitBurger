@@ -1,5 +1,6 @@
 import React from 'react';
 import './Order.css';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
 const Order = (props) => {
   const ingredients = [];
   // for (let ingredientName in props.ingredients) {
@@ -14,9 +15,12 @@ const Order = (props) => {
   //   );
   //})
   return (
-    <div className = "Order">
-      <p>Ingredients: <strong>{props.ingredients}</strong></p>
-      <p>Price: <strong>{props.price}</strong></p>
+    <div>
+      <Toolbar/>
+      <div className = "Order">
+        <p>Ingredients: <strong>{props.ingredients}</strong></p>
+        <p>Price: <strong>{props.price}</strong></p>
+      </div>
     </div>
   );
 }
