@@ -16,7 +16,7 @@ class Orders extends React.Component {
             id: key
           });
       }
-      //console.log('data is', fetchOrders);
+      console.log('data is', fetchOrders);
         this.setState({
           order: fetchOrders,
           lading: false
@@ -31,8 +31,12 @@ class Orders extends React.Component {
   render() {
     return (
       <div>
-        <Order/>
-        <Order/>
+        {this.state.order.map(order => (
+          <Order
+          key = {order.id}
+          ingredients = {order.ingredients}
+          price = {order.price} />
+        ))}
       </div>
     );
   }
